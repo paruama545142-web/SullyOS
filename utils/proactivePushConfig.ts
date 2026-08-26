@@ -21,8 +21,8 @@
 //   用户在 Settings → Instant Push 里生成；Proactive 和 Instant 共用同一份
 //   VAPID，避免两边互相 unsubscribe 抢同一个 pushManager 订阅。
 // ═══════════════════════════════════════════════════════════════════
-const WORKER_URL = 'https://noir2.cc.cd';
-const CLIENT_TOKEN = 'weqwqewqeqwdcsccagdgs32132';
+const WORKER_URL = 'https://sullyos-proactive-push.jishixiaoxi.workers.dev';
+const CLIENT_TOKEN = 'amAk1pCH3EjFWrwAx5qHCLafH0tgUdiVtNr0Kk1AGn4';
 // ═══════════════════════════════════════════════════════════════════
 
 // ── 全局停用开关（KILL SWITCH）─────────────────────────────────────
@@ -32,7 +32,7 @@ const CLIENT_TOKEN = 'weqwqewqeqwdcsccagdgs32132';
 // loadPushConfig() 一律返回 enabled=false：心跳不再启动、不再向 Worker
 // 注册，Worker 在心跳窗口（默认 5 分钟）内自动对这些设备停发。
 // 注意：只关掉 Worker 加速层，proactiveChat.ts 的本地定时主动消息不受影响。
-const FORCE_DISABLED = true;
+const FORCE_DISABLED = false;
 // ───────────────────────────────────────────────────────────────────
 
 import { loadPushVapid, isPushVapidReady } from './pushVapid';
@@ -614,3 +614,4 @@ export function installWakeListener() {
     } catch { /* ignore */ }
   });
 }
+
